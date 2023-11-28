@@ -14,7 +14,7 @@ function App() {
   const [swap, setSwap] = useState([])
   const [sortedIndex, setSortedIndex] = useState([])
 
-  const generateRandomArray = (length) => {
+  const generateRandomArray = () => {
     setCompleted(false)
     setSorting(false)
     setSortedIndex([])
@@ -22,13 +22,13 @@ function App() {
     function getRandomInt(min, max) {
       return Math.floor(Math.random() * (max - min + 1)) + min
     }
-    const randomArray = Array.from({ length }, () => getRandomInt(1, 20))
+    const randomArray = Array.from({ length:len }, () => getRandomInt(1, 20))
     console.log(randomArray)
     setBlocks(randomArray)
   }
 
   useEffect(() => {
-    generateRandomArray(len)
+    generateRandomArray()
   }, [len, algo])
 
   const handleSort = () => {
@@ -74,11 +74,21 @@ function App() {
     //       setSorting(false)
     //       setCompleted(true)
     //     })()
-    sortAccOrder(BubbleSort(blocks))
+    algo === 'bubbleSort'
+      ? sortAccOrder(BubbleSort(blocks))
+      : (() => {
+          setSorting(false)
+          setCompleted(true)
+        })()
   }
   return (
     <>
-      <Navbar onBubbleSortClick={handleSort} />
+      <Navbar
+        generateRandomArray={generateRandomArray}
+        handleSort={handleSort}
+        setAlgo={setAlgo}
+        sorting={sorting}
+      />
       <ListBlock
         blocks={blocks}
         compare={sorting && compare}
