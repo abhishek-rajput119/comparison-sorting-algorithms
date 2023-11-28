@@ -1,15 +1,20 @@
 import './App.css'
-import ListBlock from './components/ListBlock'
 import { useState, useEffect } from 'react'
-import BubbleSort from './algorithms/BubbleSort'
+import ListBlock from './components/ListBlock'
 import Navbar from './components/Navbar'
+import BubbleSort from './algorithms/BubbleSort'
+import SelectionSort from './algorithms/SelectionSort'
+import MergeSort from './algorithms/BubbleSort'
+import QuickSort from './algorithms/QuickSort'
+import InsertionSort from './algorithms/InsertionSort'
+
 function App() {
   const [algo, setAlgo] = useState('bubbleSort')
-  const [len, setLength] = useState(30)
+  const [len, setLength] = useState(20)
   const [blocks, setBlocks] = useState([])
   const [sorting, setSorting] = useState(false)
   const [completed, setCompleted] = useState(true)
-  const [speed, setSpeed] = useState(250)
+  const [speed, setSpeed] = useState(100)
   const [compare, setCompare] = useState([])
   const [swap, setSwap] = useState([])
   const [sortedIndex, setSortedIndex] = useState([])
@@ -22,17 +27,19 @@ function App() {
     function getRandomInt(min, max) {
       return Math.floor(Math.random() * (max - min + 1)) + min
     }
-    const randomArray = Array.from({ length:len }, () => getRandomInt(1, 20))
+    const randomArray = Array.from({ length: len }, () => getRandomInt(1, 20))
     console.log(randomArray)
     setBlocks(randomArray)
   }
 
   useEffect(() => {
     generateRandomArray()
-  }, [len, algo])
+  }, [len])
 
   const handleSort = () => {
     const sortAccOrder = (order) => {
+      setSorting(true)
+      setSortedIndex([])
       ;(function loop(i) {
         setTimeout(function () {
           const [j, k, arr, index] = order[i]
@@ -58,24 +65,16 @@ function App() {
       })(0)
     }
 
-    setSorting(true)
-
-    // algo === 'bubbleSort'
-    //   ? sortAccOrder(bubbleSort(blocks))
-    //   : algo === 'insertionSort'
-    //   ? sortAccOrder(insertionSort(blocks))
-    //   : algo === 'selectionSort'
-    //   ? sortAccOrder(selectionSort(blocks))
-    //   : algo === 'mergeSort'
-    //   ? sortAccOrder(mergeSort(blocks))
-    //   : algo === 'quickSort'
-    //   ? sortAccOrder(quickSort(blocks))
-    //   : (() => {
-    //       setSorting(false)
-    //       setCompleted(true)
-    //     })()
     algo === 'bubbleSort'
       ? sortAccOrder(BubbleSort(blocks))
+      : algo === 'insertionSort'
+      ? sortAccOrder(InsertionSort(blocks))
+      : algo === 'selectionSort'
+      ? sortAccOrder(SelectionSort(blocks))
+      : algo === 'mergeSort'
+      ? sortAccOrder(MergeSort(blocks))
+      : algo === 'quickSort'
+      ? sortAccOrder(QuickSort(blocks))
       : (() => {
           setSorting(false)
           setCompleted(true)

@@ -22,7 +22,7 @@ const Navbar = ({ generateRandomArray, handleSort, setAlgo, sorting }) => {
           </button>
           <button
             onClick={() => {
-              setAlgo('bubbleSort')
+              setAlgo('insertionSort')
               handleSort()
             }}
             disabled={sorting}
@@ -31,7 +31,7 @@ const Navbar = ({ generateRandomArray, handleSort, setAlgo, sorting }) => {
           </button>
           <button
             onClick={() => {
-              setAlgo('bubbleSort')
+              setAlgo('selectionSort')
               handleSort()
             }}
             disabled={sorting}
@@ -40,7 +40,7 @@ const Navbar = ({ generateRandomArray, handleSort, setAlgo, sorting }) => {
           </button>
           <button
             onClick={() => {
-              setAlgo('bubbleSort')
+              setAlgo('quickSort')
               handleSort()
             }}
             disabled={sorting}
@@ -49,7 +49,7 @@ const Navbar = ({ generateRandomArray, handleSort, setAlgo, sorting }) => {
           </button>
           <button
             onClick={() => {
-              setAlgo('bubbleSort')
+              setAlgo('mergeSort')
               handleSort()
             }}
             disabled={sorting}
@@ -58,7 +58,7 @@ const Navbar = ({ generateRandomArray, handleSort, setAlgo, sorting }) => {
           </button>
           <button
             onClick={() => {
-              setAlgo('bubbleSort')
+              setAlgo('shellSort')
               handleSort()
             }}
             disabled={sorting}
@@ -66,10 +66,7 @@ const Navbar = ({ generateRandomArray, handleSort, setAlgo, sorting }) => {
             Shell Sort
           </button>
           <button
-            onClick={() => {
-              setAlgo('bubbleSort')
-              handleSort()
-            }}
+            onClick={null}
             disabled={sorting}
           >
             Change Size
