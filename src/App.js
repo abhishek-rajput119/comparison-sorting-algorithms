@@ -8,13 +8,15 @@ import MergeSort from './algorithms/MergeSort'
 import QuickSort from './algorithms/QuickSort'
 import InsertionSort from './algorithms/InsertionSort'
 import ShellSort from './algorithms/ShellSort'
+import Heading from './components/Heading'
+import Footer from './components/Footer'
 
 function App() {
   const [len, setLength] = useState(20)
   const [blocks, setBlocks] = useState([])
   const [sorting, setSorting] = useState(false)
   const [completed, setCompleted] = useState(true)
-  const [speed, setSpeed] = useState(100)
+  const [speed, setSpeed] = useState(150)
   const [compare, setCompare] = useState([])
   const [swap, setSwap] = useState([])
   const [sortedIndex, setSortedIndex] = useState([])
@@ -60,7 +62,7 @@ function App() {
             setSorting(false)
             setCompleted(true)
           }
-        }, speed)
+        }, 500-speed)
       })(0)
     }
     console.log(selectedAlgorithm)
@@ -83,6 +85,7 @@ function App() {
   }
   return (
     <>
+      <Heading />
       <Navbar
         generateRandomArray={generateRandomArray}
         handleSort={handleSort}
@@ -94,6 +97,7 @@ function App() {
         swap={sorting && swap}
         sorted={sortedIndex}
       />
+      <Footer setSpeed={setSpeed} sorting={sorting} initialSpeed = {speed}/>
     </>
   )
 }
