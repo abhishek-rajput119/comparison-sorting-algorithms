@@ -1,4 +1,3 @@
-import './App.css'
 import { useState, useEffect } from 'react'
 import ListBlock from './components/ListBlock'
 import Navbar from './components/Navbar'
