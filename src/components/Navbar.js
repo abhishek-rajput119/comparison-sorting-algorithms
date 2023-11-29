@@ -6,7 +6,6 @@ const Navbar = ({ generateRandomArray, handleSort, sorting }) => {
   return (
     <nav>
       <div className="navbar">
-        <h1>Sorting Visualizer</h1>
         <div className="buttons">
           <button onClick={generateRandomArray} disabled={sorting}>
             Randomize Array

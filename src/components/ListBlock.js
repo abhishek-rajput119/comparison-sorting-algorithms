@@ -6,9 +6,9 @@ const ListBlock = ({ blocks, compare, sorted, swap }) => {
   return (
     <div className="listBlocks">
       {blocks.map((block, i) => {
-        const height = (block * 500) / blocks.length
+        const height = (block * 600) / blocks.length
 
-        let bg = 'turquoise'
+        let bg = '#9EADE5'
 
         if (compare && (i === compare[0] || i === compare[1])) {
           bg = '#ffff50'  //Light yellow.
@@ -29,7 +29,7 @@ const ListBlock = ({ blocks, compare, sorted, swap }) => {
         }
         return (
           <div key={i} className="block" style={style}>
-            {block}
+            <div className='value-block'>{block}</div>
           </div>
         )
       })}

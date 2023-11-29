@@ -8,7 +8,7 @@ import MergeSort from './algorithms/MergeSort'
 import QuickSort from './algorithms/QuickSort'
 import InsertionSort from './algorithms/InsertionSort'
 import ShellSort from './algorithms/ShellSort'
-
+import Heading from './components/Heading'
 function App() {
   const [len, setLength] = useState(20)
   const [blocks, setBlocks] = useState([])
@@ -83,6 +83,7 @@ function App() {
   }
   return (
     <>
+      <Heading />
       <Navbar
         generateRandomArray={generateRandomArray}
         handleSort={handleSort}
