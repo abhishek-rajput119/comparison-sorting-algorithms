@@ -7,6 +7,7 @@ import SelectionSort from './algorithms/SelectionSort'
 import MergeSort from './algorithms/MergeSort'
 import QuickSort from './algorithms/QuickSort'
 import InsertionSort from './algorithms/InsertionSort'
+import ShellSort from './algorithms/ShellSort'
 
 function App() {
   const [len, setLength] = useState(20)
@@ -73,6 +74,8 @@ function App() {
       ? sortAccOrder(MergeSort(blocks))
       : selectedAlgorithm === 'quickSort'
       ? sortAccOrder(QuickSort(blocks))
+      : selectedAlgorithm === 'shellSort'
+      ? sortAccOrder(ShellSort(blocks))
       : (() => {
           setSorting(false)
           setCompleted(true)
