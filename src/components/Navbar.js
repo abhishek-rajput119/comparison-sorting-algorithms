@@ -2,7 +2,7 @@
 
 import React from 'react'
 import '../css/navbar.css'
-const Navbar = ({ generateRandomArray, handleSort, setAlgo, sorting }) => {
+const Navbar = ({ generateRandomArray, handleSort, sorting }) => {
   return (
     <nav>
       <div className="navbar">
@@ -11,64 +11,31 @@ const Navbar = ({ generateRandomArray, handleSort, setAlgo, sorting }) => {
           <button onClick={generateRandomArray} disabled={sorting}>
             Randomize Array
           </button>
-          <button
-            onClick={() => {
-              setAlgo('bubbleSort')
-              handleSort()
-            }}
-            disabled={sorting}
-          >
+          <button onClick={() => handleSort('bubbleSort')} disabled={sorting}>
             Bubble Sort
           </button>
           <button
-            onClick={() => {
-              setAlgo('insertionSort')
-              handleSort()
-            }}
+            onClick={() => handleSort('insertionSort')}
             disabled={sorting}
           >
             Insertion Sort
           </button>
           <button
-            onClick={() => {
-              setAlgo('selectionSort')
-              handleSort()
-            }}
+            onClick={() => handleSort('selectionSort')}
             disabled={sorting}
           >
             Selection Sort
           </button>
-          <button
-            onClick={() => {
-              setAlgo('quickSort')
-              handleSort()
-            }}
-            disabled={sorting}
-          >
+          <button onClick={() => handleSort('quickSort')} disabled={sorting}>
             Quick Sort
           </button>
-          <button
-            onClick={() => {
-              setAlgo('mergeSort')
-              handleSort()
-            }}
-            disabled={sorting}
-          >
+          <button onClick={() => handleSort('mergeSort')} disabled={sorting}>
             Merge Sort
           </button>
-          <button
-            onClick={() => {
-              setAlgo('shellSort')
-              handleSort()
-            }}
-            disabled={sorting}
-          >
+          <button onClick={() => handleSort('shellSort')} disabled={sorting}>
             Shell Sort
           </button>
-          <button
-            onClick={null}
-            disabled={sorting}
-          >
+          <button onClick={null} disabled={sorting}>
             Change Size
           </button>
         </div>

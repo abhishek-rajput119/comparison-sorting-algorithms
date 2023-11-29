@@ -4,12 +4,11 @@ import ListBlock from './components/ListBlock'
 import Navbar from './components/Navbar'
 import BubbleSort from './algorithms/BubbleSort'
 import SelectionSort from './algorithms/SelectionSort'
-import MergeSort from './algorithms/BubbleSort'
+import MergeSort from './algorithms/MergeSort'
 import QuickSort from './algorithms/QuickSort'
 import InsertionSort from './algorithms/InsertionSort'
 
 function App() {
-  const [algo, setAlgo] = useState('bubbleSort')
   const [len, setLength] = useState(20)
   const [blocks, setBlocks] = useState([])
   const [sorting, setSorting] = useState(false)
@@ -28,7 +27,6 @@ function App() {
       return Math.floor(Math.random() * (max - min + 1)) + min
     }
     const randomArray = Array.from({ length: len }, () => getRandomInt(1, 20))
-    console.log(randomArray)
     setBlocks(randomArray)
   }
 
@@ -36,7 +34,7 @@ function App() {
     generateRandomArray()
   }, [len])
 
-  const handleSort = () => {
+  const handleSort = (selectedAlgorithm) => {
     const sortAccOrder = (order) => {
       setSorting(true)
       setSortedIndex([])
@@ -64,16 +62,16 @@ function App() {
         }, speed)
       })(0)
     }
-
-    algo === 'bubbleSort'
+    console.log(selectedAlgorithm)
+    selectedAlgorithm === 'bubbleSort'
       ? sortAccOrder(BubbleSort(blocks))
-      : algo === 'insertionSort'
+      : selectedAlgorithm === 'insertionSort'
       ? sortAccOrder(InsertionSort(blocks))
-      : algo === 'selectionSort'
+      : selectedAlgorithm === 'selectionSort'
       ? sortAccOrder(SelectionSort(blocks))
-      : algo === 'mergeSort'
+      : selectedAlgorithm === 'mergeSort'
       ? sortAccOrder(MergeSort(blocks))
-      : algo === 'quickSort'
+      : selectedAlgorithm === 'quickSort'
       ? sortAccOrder(QuickSort(blocks))
       : (() => {
           setSorting(false)
@@ -85,7 +83,6 @@ function App() {
       <Navbar
         generateRandomArray={generateRandomArray}
         handleSort={handleSort}
-        setAlgo={setAlgo}
         sorting={sorting}
       />
       <ListBlock
