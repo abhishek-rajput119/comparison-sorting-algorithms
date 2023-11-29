@@ -20,7 +20,9 @@ const ShellSort = (blocks) => {
       order.push([j, i, dupBlocks.slice(), null]) // Swap
     }
   }
-
+  for (let i = 0; i < dupBlocks.length; i++) {
+    order.push([null, null, null, i])
+  }
   return order
 }
 
