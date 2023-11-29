@@ -2,7 +2,7 @@
 
 import React from 'react'
 import '../css/navbar.css'
-const Navbar = ({ generateRandomArray, handleSort, sorting }) => {
+const Navbar = ({ generateRandomArray, handleSort, sorting, changeSize }) => {
   return (
     <nav>
       <div className="navbar">
@@ -34,7 +34,7 @@ const Navbar = ({ generateRandomArray, handleSort, sorting }) => {
           <button onClick={() => handleSort('shellSort')} disabled={sorting}>
             Shell Sort
           </button>
-          <button onClick={null} disabled={sorting}>
+          <button onClick={changeSize} disabled={sorting}>
             Change Size
           </button>
         </div>

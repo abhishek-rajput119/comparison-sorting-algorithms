@@ -12,30 +12,33 @@ import Heading from './components/Heading'
 import Footer from './components/Footer'
 
 function App() {
-  const [len, setLength] = useState(20)
   const [blocks, setBlocks] = useState([])
   const [sorting, setSorting] = useState(false)
-  const [completed, setCompleted] = useState(true)
   const [speed, setSpeed] = useState(150)
   const [compare, setCompare] = useState([])
   const [swap, setSwap] = useState([])
   const [sortedIndex, setSortedIndex] = useState([])
+  const [size, setSize] = useState(1)
 
   const generateRandomArray = () => {
-    setCompleted(false)
     setSorting(false)
     setSortedIndex([])
 
     function getRandomInt(min, max) {
       return Math.floor(Math.random() * (max - min + 1)) + min
     }
-    const randomArray = Array.from({ length: len }, () => getRandomInt(1, 20))
+    const randomArray = Array.from({ length: 20 }, () => getRandomInt(1, 20))
     setBlocks(randomArray)
   }
-
+  function changeSize(){
+    setSize((prevState) =>
+      prevState > 0.1 ? setSize(prevState - 0.1) : setSize(prevState)
+    )
+    
+  }
   useEffect(() => {
     generateRandomArray()
-  }, [len])
+  }, [])
 
   const handleSort = (selectedAlgorithm) => {
     const sortAccOrder = (order) => {
@@ -60,12 +63,10 @@ function App() {
             loop(i)
           } else {
             setSorting(false)
-            setCompleted(true)
           }
         }, 500-speed)
       })(0)
     }
-    console.log(selectedAlgorithm)
     selectedAlgorithm === 'bubbleSort'
       ? sortAccOrder(BubbleSort(blocks))
       : selectedAlgorithm === 'insertionSort'
@@ -80,7 +81,6 @@ function App() {
       ? sortAccOrder(ShellSort(blocks))
       : (() => {
           setSorting(false)
-          setCompleted(true)
         })()
   }
   return (
@@ -90,12 +90,14 @@ function App() {
         generateRandomArray={generateRandomArray}
         handleSort={handleSort}
         sorting={sorting}
+        changeSize = {changeSize}
       />
       <ListBlock
         blocks={blocks}
         compare={sorting && compare}
         swap={sorting && swap}
         sorted={sortedIndex}
+        size = {size}
       />
       <Footer setSpeed={setSpeed} sorting={sorting} initialSpeed = {speed}/>
     </>
