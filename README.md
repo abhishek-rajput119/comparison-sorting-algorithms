@@ -24,7 +24,8 @@ To run the application locally, follow these steps:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/sorting-visualizer.git
+   https://github.com/abhishek-rajput119/comparison-sorting-algorithms.git
+
    ```
 
 2. Change into the project directory:
