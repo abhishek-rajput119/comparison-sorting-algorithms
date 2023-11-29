@@ -1,4 +1,3 @@
-```markdown
 # Sorting Algorithm Visualizer
 
 This React application allows you to visualize various sorting algorithms in action.
