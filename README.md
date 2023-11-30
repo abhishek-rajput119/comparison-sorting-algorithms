@@ -53,3 +53,7 @@ To run the application locally, follow these steps:
 1. Select a sorting algorithm from the  menu.
 2. Adjust the speed and size of the visualization using the controls provided.
 3. Observe the real-time visualization of the chosen sorting algorithm.
+
+# Deployment
+Check out the deployed application at https://sorting-visualizers-119.netlify.app/
+
