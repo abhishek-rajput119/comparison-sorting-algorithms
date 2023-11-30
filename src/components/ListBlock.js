@@ -5,7 +5,7 @@ const ListBlock = ({ blocks, compare, sorted, swap , size}) => {
   return (
     <div className="listBlocks">
       {blocks.map((block, i) => {
-        const height = block * 19  + 20
+        const height = block * 19 * size + 20
 
         let bg = '#9EADE5'
 
